@@ -2,6 +2,7 @@ package com.galvanize.prodman.service;
 
 import com.galvanize.prodman.domain.Product;
 import com.galvanize.prodman.domain.Quote;
+import com.galvanize.prodman.model.Currency;
 import com.galvanize.prodman.model.ProductDTO;
 import com.galvanize.prodman.repository.ProductRepository;
 import org.springframework.stereotype.Service;

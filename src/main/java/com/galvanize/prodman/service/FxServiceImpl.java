@@ -1,6 +1,7 @@
 package com.galvanize.prodman.service;
 
 import com.galvanize.prodman.domain.Quote;
+import com.galvanize.prodman.model.Currency;
 import com.galvanize.prodman.repository.FxRepository;
 import com.galvanize.prodman.repository.QuoteRepository;
 import org.springframework.scheduling.annotation.Scheduled;
