@@ -28,4 +28,9 @@ public class ProductDTO {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Schema(type = "string", example = "1.00")
     private Double price;
+
+    @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Schema(type = "string", example = "1")
+    private Integer views;
 }
