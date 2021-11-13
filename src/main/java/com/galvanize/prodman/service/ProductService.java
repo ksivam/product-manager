@@ -1,39 +1,40 @@
 package com.galvanize.prodman.service;
 
-import com.galvanize.prodman.domain.Product;
+import com.galvanize.prodman.model.Currency;
 import com.galvanize.prodman.model.ProductDTO;
-import com.galvanize.prodman.repository.ProductRepository;
-import org.springframework.stereotype.Service;
 
+/**
+ * @author Krishna Sadasivam
+ */
+public interface ProductService {
+    /**
+     * Creates a product
+     *
+     * @param productDTO The product.
+     * @return the product id.
+     */
+    Integer create(final ProductDTO productDTO);
 
-@Service
-public class ProductService {
+    /**
+     * Gets a product and augments the price of the product to reflect the currency.
+     *
+     * @param id       the product id.
+     * @param currency the currency to which the price of the product is converted.
+     * @return the product.
+     */
+    ProductDTO get(final Integer id, final Currency currency);
 
-    private final ProductRepository productRepository;
-    private final FxService fxService;
+    /**
+     * Increments the product view count by one.
+     *
+     * @param id the product id.
+     */
+    void incrementViewCountByOne(final Integer id);
 
-    public ProductService(final ProductRepository productRepository, final FxService fxService) {
-        this.productRepository = productRepository;
-        this.fxService = fxService;
-    }
-
-    public Integer create(final ProductDTO productDTO) {
-        final Product product = new Product();
-        mapToEntity(productDTO, product);
-        return productRepository.save(product).getId();
-    }
-
-    public void delete(final Integer id) {
-        productRepository.deleteById(id);
-    }
-
-    private Product mapToEntity(final ProductDTO productDTO, final Product product) {
-        product.setName(productDTO.getName());
-        product.setDescription(productDTO.getDescription());
-        product.setPrice(productDTO.getPrice());
-        product.setViews(0);
-        product.setDeleted(false);
-        return product;
-    }
-
+    /**
+     * Deleted the product by id.
+     *
+     * @param id the product id.
+     */
+    void delete(final Integer id);
 }
